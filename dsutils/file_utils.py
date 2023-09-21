@@ -33,7 +33,7 @@ def write_dict_to_file(dict, path, file_name):
 
     create_dir_if_not_exists(path)
     with open(path+file_name, 'w') as file:
-        file.write(json.dumps(dict, indent=2))
+        file.write(pretty_print_dict(dict))
 
 def write_two_lvl_dict_to_file(dict, path):
     create_dir_if_not_exists(path)
@@ -59,3 +59,6 @@ def read_dict_of_dfs_from_dir(dir, index_col=None):
             key = filename[:-4]
             data_dict[key] = pd.read_csv(f"{dir}/{filename}", index_col=index_col)
     return data_dict
+
+def pretty_print_dict(dict):
+    print(json.dumps(dict, indent=2))
